@@ -19,7 +19,10 @@ def get_fact():
 
 @app.route('/')
 def home():
-    return "FILL ME!"
+    factoid = get_fact()
+    post_request = requests.post('http://hidden-journey-62459.herokuapp.com/piglatinize/',
+                                 data={'input_text':factoid})
+    return post_request.url
 
 
 if __name__ == "__main__":
